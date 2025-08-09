@@ -1,0 +1,46 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de compilación
+bin/
+obj/
+
+# Publicación
+publish/
+*.publish.xml
+
+# Paquetes NuGet (se restauran)
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Cachés de .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Resultados de prueba
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Configuración de IDEs
+*.local
+*.vscode/
+.idea/
+
+# Archivos temporales y logs
+*.tmp
+*.temp
+*.log
+
+# Archivos de base de datos y backups
+*.dbmdl
+*.bak

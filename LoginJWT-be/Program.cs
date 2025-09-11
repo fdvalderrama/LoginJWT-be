@@ -8,12 +8,14 @@ builder.Services.AddDbContext<LoginJWT_DbContext>(options =>
 
 // Add services to the container.
 
+builder.WebHost.UseUrls("https://0.0.0.0:7061", "http://192.168.1.71:5089");
+
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLoginJWT",
-        builder => builder.WithOrigins("http://192.168.1.72:5173", "http://localhost:5173")
+        builder => builder.WithOrigins("http://192.168.1.71:5173", "http://localhost:5173")
                           .AllowAnyMethod()
                           .AllowAnyHeader());
 });

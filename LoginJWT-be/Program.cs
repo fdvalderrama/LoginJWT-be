@@ -8,14 +8,14 @@ builder.Services.AddDbContext<LoginJWT_DbContext>(options =>
 
 // Add services to the container.
 
-builder.WebHost.UseUrls("https://0.0.0.0:7061", "http://192.168.1.71:5089");
+builder.WebHost.UseUrls("https://0.0.0.0:7061", "http://0.0.0.0:5089");
 
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLoginJWT",
-        builder => builder.WithOrigins("http://192.168.1.71:5173", "http://localhost:5173")
+        builder => builder.AllowAnyOrigin()
                           .AllowAnyMethod()
                           .AllowAnyHeader());
 });
@@ -33,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors("AllowLoginJWT");
 

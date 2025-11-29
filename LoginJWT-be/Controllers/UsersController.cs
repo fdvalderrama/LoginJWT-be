@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LoginJWT_be;
 using LoginJWT_be.Models;
+using LoginJWT_be.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoginJWT_be.Controllers
 {
@@ -22,10 +24,14 @@ namespace LoginJWT_be.Controllers
         }
 
         // GET: api/Users
+        [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var result = await _context.Users
+                .Select(u => new UserDto { Id= u.Id, Name = u.Name, Role = u.Role}).ToListAsync();
+
+            return result;
         }
 
         // GET: api/Users/5

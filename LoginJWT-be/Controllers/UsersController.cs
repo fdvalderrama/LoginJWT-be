@@ -24,12 +24,13 @@ namespace LoginJWT_be.Controllers
         }
 
         // GET: api/Users
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
             var result = await _context.Users
-                .Select(u => new UserDto { Id= u.Id, Name = u.Name, Role = u.Role}).ToListAsync();
+                .Select(u => new UserDto { Id= u.Id, Name = u.Name, Email = u.Email
+                , Role = u.Role}).ToListAsync();
 
             return result;
         }
